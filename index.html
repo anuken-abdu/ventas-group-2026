@@ -183,7 +183,10 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 12px)}
 .model-tab.active{background:var(--bg4);color:var(--gold);border-color:var(--gold)}
 
 .car{display:none}
-.car.active{display:grid;grid-template-columns:1fr 420px;gap:44px;align-items:start}
+.car.active{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:44px;align-items:start}
+.car>*{min-width:0;max-width:100%}
+.adv>*,.svc>*,.logos>*,.about-grid>*,.contact-grid>*,.certs>*{min-width:0}
+.gal-thumbs,.model-tabs,.prices,.specs{max-width:100%}
 
 .gal-main{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:16/10;background:var(--bg3);cursor:zoom-in}
 .gal-main img{width:100%;height:100%;object-fit:cover;transition:opacity .25s ease}
@@ -298,7 +301,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 12px)}
 /* ===== TABLET ===== */
 @media(max-width:1024px){
   .adv{grid-template-columns:1fr 1fr}
-  .car.active{grid-template-columns:1fr;gap:26px}
+  .car.active{grid-template-columns:minmax(0,1fr);gap:26px}
   .gal-thumbs{grid-template-columns:repeat(8,1fr)}
   .svc{grid-template-columns:1fr}
   .about-grid{grid-template-columns:1fr;gap:36px}
