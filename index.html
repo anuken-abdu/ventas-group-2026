@@ -113,8 +113,20 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 12px)}
 .drawer-close{position:absolute;top:16px;right:16px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:var(--gray2);font-size:20px}
 .drawer-close .ic{width:20px;height:20px}
 .drawer-nav{list-style:none;flex:1}
-.drawer-nav a{display:block;padding:15px 26px;font-size:16px;font-weight:600;color:var(--gray2);border-bottom:1px solid var(--border);transition:color var(--t)}
-.drawer-nav a:hover{color:var(--gold)}
+.drawer-nav>li>a,.d-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;text-align:left;padding:15px 24px;font-size:15.5px;font-weight:600;color:var(--gray2);border-bottom:1px solid var(--border);transition:color var(--t)}
+.drawer-nav>li>a:hover,.d-toggle:hover{color:var(--gold)}
+.d-toggle .ic{width:14px;height:14px;transition:transform var(--t)}
+.d-toggle.open{color:var(--gold)}
+.d-toggle.open .ic{transform:rotate(180deg)}
+.d-sub{display:none;background:rgba(0,0,0,.32)}
+.d-sub.open{display:block}
+.d-cat{display:flex;align-items:center;justify-content:space-between;width:100%;text-align:left;padding:12px 24px 12px 32px;font-size:12px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--border)}
+.d-cat .ic{width:12px;height:12px;transition:transform var(--t)}
+.d-cat.open .ic{transform:rotate(180deg)}
+.d-models{display:none;background:rgba(0,0,0,.28)}
+.d-models.open{display:block}
+.d-model{display:block;width:100%;text-align:left;padding:11px 24px 11px 46px;font-size:13px;font-weight:500;color:var(--gray2);border-bottom:1px solid rgba(255,255,255,.05);transition:color var(--t),background var(--t)}
+.d-model:hover{color:var(--gold);background:rgba(201,168,76,.07)}
 .drawer-bot{padding:20px 26px 0;display:flex;flex-direction:column;gap:10px}
 .drawer-lang{display:flex;gap:6px}
 .drawer-lang button{flex:1;padding:9px;text-align:center;border:1.5px solid var(--border);border-radius:8px;font-size:12px;font-weight:800;color:var(--gray)}
@@ -123,28 +135,20 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 12px)}
 .drawer-tel{display:flex;align-items:center;justify-content:center;gap:10px;border:1.5px solid var(--border2);color:var(--white);padding:13px;border-radius:var(--r-sm);font-weight:700;font-size:15px}
 
 /* ===== HERO ===== */
-.hero{position:relative;min-height:640px;height:100svh;max-height:900px;background:#000;display:flex;align-items:flex-end;overflow:hidden}
+.hero{position:relative;min-height:520px;height:min(88svh,860px);background:#000;display:flex;align-items:flex-end;overflow:hidden}
 .hero-media{position:absolute;inset:0}
 .hero-media img{width:100%;height:100%;object-fit:cover;object-position:center}
-.hero-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.94) 0%,rgba(0,0,0,.72) 32%,rgba(0,0,0,.25) 62%,rgba(0,0,0,.45) 100%)}
-.hero-inner{position:relative;z-index:2;width:100%;padding-bottom:56px}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:11px;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);
-  border:1px solid rgba(201,168,76,.35);border-radius:50px;padding:7px 16px;margin-bottom:20px;
-  background:rgba(201,168,76,.06);
+.hero-shade{position:absolute;inset:0;background:linear-gradient(transparent,rgba(0,0,0,.7) 40%,rgba(0,0,0,.88))}
+.hero-inner{position:relative;z-index:2;width:100%;padding-bottom:48px;text-align:center}
+.hero-title{
+  font-family:var(--font-serif);font-size:clamp(26px,4.5vw,52px);font-weight:700;line-height:1.2;
+  text-shadow:0 2px 20px rgba(0,0,0,.6);
 }
-.hero-title{font-family:var(--font-serif);font-size:clamp(30px,5vw,60px);font-weight:700;line-height:1.12;letter-spacing:-.01em;max-width:15ch}
-.hero-sub{margin-top:16px;font-size:clamp(14px,1.6vw,18px);color:var(--gray2);max-width:52ch;line-height:1.6}
-.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-.hero-cta .btn-wa{background:var(--wa);color:#fff;box-shadow:0 6px 24px rgba(37,211,102,.25)}
-.hero-cta .btn-wa:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(37,211,102,.4)}
-.hero-facts{
-  display:flex;gap:36px;flex-wrap:wrap;margin-top:38px;padding-top:26px;
-  border-top:1px solid rgba(255,255,255,.12);
+.hero-sub{
+  margin-top:14px;font-size:clamp(13px,1.8vw,17px);color:var(--gold);font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;text-shadow:0 1px 10px rgba(0,0,0,.5);
 }
-.hero-fact b{display:block;font-family:var(--font-serif);font-size:28px;color:var(--gold2);line-height:1.1}
-.hero-fact span{font-size:12px;color:var(--gray);letter-spacing:.08em;text-transform:uppercase}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:28px}
 
 /* ===== SECTION HEAD ===== */
 .sec{padding:88px 0}
@@ -312,16 +316,12 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 12px)}
   .nav-phone{padding:9px;border-radius:50%;width:40px;height:40px;justify-content:center}
   .logo-img{height:36px}
 
-  .hero{min-height:560px;height:92svh;align-items:flex-end}
-  .hero-inner{padding-bottom:36px}
-  .hero-eyebrow{font-size:10px;letter-spacing:.2em;padding:6px 13px;margin-bottom:16px}
-  .hero-title{font-size:29px;max-width:100%}
-  .hero-sub{font-size:14px;margin-top:12px}
-  .hero-cta{margin-top:22px;gap:10px}
-  .hero-cta .btn{width:100%;padding:15px 20px;border-radius:var(--r-sm)}
-  .hero-facts{gap:20px 26px;margin-top:26px;padding-top:20px}
-  .hero-fact b{font-size:22px}
-  .hero-fact span{font-size:10.5px}
+  .hero{min-height:420px;height:72svh}
+  .hero-inner{padding-bottom:32px}
+  .hero-title{font-size:22px;line-height:1.25}
+  .hero-sub{font-size:11px;letter-spacing:.08em;margin-top:10px}
+  .hero-cta{margin-top:20px}
+  .hero-cta .btn{padding:13px 28px;font-size:13px;border-radius:var(--r-sm)}
 
   .adv{grid-template-columns:1fr;gap:10px}
   .adv-item{padding:18px}
@@ -430,11 +430,15 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 12px)}
 <aside class="drawer" id="drawer">
   <button class="drawer-close" id="drawerClose" aria-label="Закрыть"><svg class="ic"><use href="#i-x"/></svg></button>
   <ul class="drawer-nav">
-    <li><a href="#fleet" data-i18n="nav_fleet">Автопарк</a></li>
-    <li><a href="#services" data-i18n="nav_services">Услуги</a></li>
-    <li><a href="#about" data-i18n="nav_about">О компании</a></li>
-    <li><a href="#partners" data-i18n="nav_partners">Партнёры</a></li>
-    <li><a href="#contacts" data-i18n="nav_contacts">Контакты</a></li>
+    <li><a href="#top" class="d-link" data-i18n="nav_home">Главная</a></li>
+    <li>
+      <button class="d-toggle" id="dFleetBtn"><span data-i18n="nav_fleet">Автопарк</span><svg class="ic"><use href="#i-chev"/></svg></button>
+      <div class="d-sub" id="dFleetSub"></div>
+    </li>
+    <li><a href="#services" class="d-link" data-i18n="nav_services">Услуги</a></li>
+    <li><a href="#about" class="d-link" data-i18n="nav_about">О компании</a></li>
+    <li><a href="#partners" class="d-link" data-i18n="nav_partners">Партнёры</a></li>
+    <li><a href="#contacts" class="d-link" data-i18n="nav_contacts">Контакты</a></li>
   </ul>
   <div class="drawer-bot">
     <div class="drawer-lang">
@@ -458,18 +462,10 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 12px)}
   <div class="hero-shade"></div>
   <div class="hero-inner">
     <div class="container">
-      <div class="hero-eyebrow" data-i18n="hero_eyebrow">Астана · с 2015 года</div>
-      <h1 class="hero-title" data-i18n="hero_title">Аренда премиум автомобилей с водителем</h1>
-      <p class="hero-sub" data-i18n="hero_sub">Mercedes S-Class, Lexus LX, Land Cruiser, V-Class и Sprinter. Трансферы, деловые поездки, обслуживание делегаций и мероприятий. Подача по городу и в аэропорт.</p>
+      <h1 class="hero-title" data-i18n="hero_title">Аренда премиум автомобилей<br>с водителем</h1>
+      <p class="hero-sub" data-i18n="hero_sub">Седаны · Внедорожники · Минивэны · Микроавтобусы</p>
       <div class="hero-cta">
-        <a href="#" class="btn btn-wa wa-link" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg><span data-i18n="cta_wa">Написать в WhatsApp</span></a>
-        <a href="#fleet" class="btn btn-ghost"><span data-i18n="cta_fleet">Смотреть автопарк</span></a>
-      </div>
-      <div class="hero-facts">
-        <div class="hero-fact"><b>10</b><span data-i18n="fact_years">лет на рынке</span></div>
-        <div class="hero-fact"><b>50+</b><span data-i18n="fact_cars">автомобилей</span></div>
-        <div class="hero-fact"><b>24/7</b><span data-i18n="fact_247">подача авто</span></div>
-        <div class="hero-fact"><b>AIF</b><span data-i18n="fact_aif">официальный уровень</span></div>
+        <a href="#" class="btn btn-gold wa-link" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg><span data-i18n="hero_btn">Оставить заявку</span></a>
       </div>
     </div>
   </div>
@@ -762,11 +758,11 @@ function imgs(c){var a=[],k;for(k=1;k<=c.n;k++)a.push('images/'+c.pre+'-0'+k+'.j
 /* ================= I18N ================= */
 var I={
 ru:{
-nav_fleet:'Автопарк',nav_services:'Услуги',nav_about:'О компании',nav_partners:'Партнёры',nav_contacts:'Контакты',
-hero_eyebrow:'Астана · с 2015 года',hero_title:'Аренда премиум автомобилей с водителем',
-hero_sub:'Mercedes S-Class, Lexus LX, Land Cruiser, V-Class и Sprinter. Трансферы, деловые поездки, обслуживание делегаций и мероприятий. Подача по городу и в аэропорт.',
+nav_home:'Главная',nav_fleet:'Автопарк',nav_services:'Услуги',nav_about:'О компании',nav_partners:'Партнёры',nav_contacts:'Контакты',
+hero_title:'Аренда премиум автомобилей\nс водителем',
+hero_sub:'Седаны · Внедорожники · Минивэны · Микроавтобусы',
+hero_btn:'Оставить заявку',
 cta_wa:'Написать в WhatsApp',cta_fleet:'Смотреть автопарк',cta_call:'Позвонить',
-fact_years:'лет на рынке',fact_cars:'автомобилей',fact_247:'подача авто',fact_aif:'официальный уровень',
 adv1t:'Собственный автопарк',adv1d:'Более 50 автомобилей бизнес и представительского класса. Без посредников и накруток.',
 adv2t:'Профессиональные водители',adv2d:'Опыт работы с делегациями и VIP-гостями, деловой дресс-код, знание города.',
 adv3t:'Договор и безнал',adv3d:'Работаем с юридическими лицами: официальный договор, счёт, закрывающие документы.',
@@ -804,11 +800,11 @@ cta_title:'Подберём авто под задачу за 5 минут',cta_
 footer_tag:'Аренда премиум автомобилей с водителем в Астане',footer_copy:'© 2026 Ventas Group. Все права защищены.',footer_dev:'Разработка сайта'
 },
 kz:{
-nav_fleet:'Автопарк',nav_services:'Қызметтер',nav_about:'Компания туралы',nav_partners:'Серіктестер',nav_contacts:'Байланыс',
-hero_eyebrow:'Астана · 2015 жылдан бері',hero_title:'Жүргізушімен премиум автомобиль жалдау',
-hero_sub:'Mercedes S-Class, Lexus LX, Land Cruiser, V-Class және Sprinter. Трансферлер, іскери сапарлар, делегациялар мен іс-шараларға қызмет көрсету.',
+nav_home:'Басты бет',nav_fleet:'Автопарк',nav_services:'Қызметтер',nav_about:'Компания туралы',nav_partners:'Серіктестер',nav_contacts:'Байланыс',
+hero_title:'Жүргізушімен премиум\nавтомобиль жалдау',
+hero_sub:'Седандар · Жол талғамайтындар · Минивэндер · Микроавтобустар',
+hero_btn:'Өтінім қалдыру',
 cta_wa:'WhatsApp-қа жазу',cta_fleet:'Автопаркті көру',cta_call:'Қоңырау шалу',
-fact_years:'жыл нарықта',fact_cars:'автомобиль',fact_247:'авто беру',fact_aif:'ресми деңгей',
 adv1t:'Меншікті автопарк',adv1d:'Бизнес және өкілдік класты 50-ден астам автомобиль. Делдалдарсыз.',
 adv2t:'Кәсіби жүргізушілер',adv2d:'Делегациялармен және VIP-қонақтармен жұмыс тәжірибесі, іскери дресс-код, қаланы білу.',
 adv3t:'Шарт және қолма-қол ақшасыз есеп',adv3d:'Заңды тұлғалармен жұмыс: ресми шарт, шот, жабу құжаттары.',
@@ -846,11 +842,11 @@ cta_title:'5 минутта авто таңдап береміз',cta_desc:'Кү
 footer_tag:'Астанада жүргізушімен премиум автомобиль жалдау',footer_copy:'© 2026 Ventas Group. Барлық құқықтар қорғалған.',footer_dev:'Сайтты әзірлеу'
 },
 en:{
-nav_fleet:'Fleet',nav_services:'Services',nav_about:'About',nav_partners:'Partners',nav_contacts:'Contacts',
-hero_eyebrow:'Astana · since 2015',hero_title:'Premium Car Rental with Driver',
-hero_sub:'Mercedes S-Class, Lexus LX, Land Cruiser, V-Class and Sprinter. Transfers, business trips, delegation and event services. City and airport pickup.',
+nav_home:'Home',nav_fleet:'Fleet',nav_services:'Services',nav_about:'About',nav_partners:'Partners',nav_contacts:'Contacts',
+hero_title:'Premium Car Rental\nwith Driver',
+hero_sub:'Sedans · SUVs · Minivans · Minibuses',
+hero_btn:'Book Now',
 cta_wa:'Message on WhatsApp',cta_fleet:'View the fleet',cta_call:'Call us',
-fact_years:'years on the market',fact_cars:'vehicles',fact_247:'car dispatch',fact_aif:'official level',
 adv1t:'Own fleet',adv1d:'Over 50 business and executive class vehicles. No intermediaries, no markups.',
 adv2t:'Professional drivers',adv2d:'Experience with delegations and VIP guests, business dress code, deep city knowledge.',
 adv3t:'Contract & bank transfer',adv3d:'We work with companies: official contract, invoice, closing documents.',
@@ -889,6 +885,48 @@ footer_tag:'Premium car rental with driver in Astana',footer_copy:'© 2026 Venta
 }};
 var lang='ru';
 function t(k){return (I[lang]&&I[lang][k])||I.ru[k]||'';}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+/* ===== МЕНЮ-ГАМБУРГЕР: категории → модели ===== */
+function renderDrawerFleet(){
+  var box=document.getElementById('dFleetSub');
+  box.innerHTML=CATS.map(function(c){
+    var models=CARS.filter(function(x){return x.cat===c.id;}).map(function(car){
+      return '<button class="d-model" data-cat="'+c.id+'" data-car="'+car.i+'">'+car.name+'</button>';
+    }).join('');
+    return '<button class="d-cat" data-cat="'+c.id+'"><span data-i18n="'+c.key+'">'+t(c.key)+'</span><svg class="ic"><use href="#i-chev"/></svg></button>'+
+           '<div class="d-models" data-models="'+c.id+'">'+models+'</div>';
+  }).join('');
+
+  box.querySelectorAll('.d-cat').forEach(function(h){
+    h.addEventListener('click',function(){
+      var list=box.querySelector('.d-models[data-models="'+h.dataset.cat+'"]');
+      var open=h.classList.toggle('open');
+      list.classList.toggle('open',open);
+    });
+  });
+  box.querySelectorAll('.d-model').forEach(function(b){
+    b.addEventListener('click',function(){selectCar(b.dataset.cat,b.dataset.car);});
+  });
+}
+
+/* Выбор конкретной модели из меню */
+function selectCar(cat,i){
+  document.querySelectorAll('.cat-tab').forEach(function(x){x.classList.toggle('active',x.dataset.cat===cat);});
+  document.querySelectorAll('.cat-panel').forEach(function(p){p.classList.toggle('active',p.dataset.cat===cat);});
+  var panel=document.querySelector('.cat-panel[data-cat="'+cat+'"]');
+  if(panel){
+    panel.querySelectorAll('.model-tab').forEach(function(x){x.classList.toggle('active',x.dataset.car===String(i));});
+    panel.querySelectorAll('.car').forEach(function(c){c.classList.toggle('active',c.dataset.car===String(i));});
+    var at=panel.querySelector('.model-tab.active');
+    if(at&&at.scrollIntoView)at.scrollIntoView({block:'nearest',inline:'center'});
+  }
+  closeDrawer();
+  setTimeout(function(){
+    var el=document.getElementById('fleet');
+    if(el)window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'});
+  },120);
+}
 
 /* ================= RENDER CATALOG ================= */
 function waLink(txt){return WA_BASE+encodeURIComponent(txt||WA_DEFAULT);}
@@ -950,7 +988,9 @@ function applyLang(l){
   document.documentElement.lang=l;
   document.querySelectorAll('[data-i18n]').forEach(function(el){
     var k=el.getAttribute('data-i18n'),v=t(k);
-    if(v)el.textContent=v;
+    if(!v)return;
+    if(v.indexOf('\n')!==-1){el.innerHTML=v.split('\n').map(esc).join('<br>');}
+    else{el.textContent=v;}
   });
   document.querySelectorAll('.specs-btn').forEach(function(b){
     b.querySelector('.specs-lbl').textContent=b.classList.contains('open')?t('specs_hide'):t('specs_show');
@@ -1043,7 +1083,7 @@ document.addEventListener('keydown',function(e){
 var navbar=document.getElementById('navbar'),upBtn=document.getElementById('upBtn');
 function onScroll(){
   navbar.classList.toggle('scrolled',window.scrollY>40);
-  upBtn.classList.toggle('on',window.scrollY>500);
+  upBtn.classList.toggle('on',window.scrollY>300);
 }
 window.addEventListener('scroll',onScroll,{passive:true});
 upBtn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
@@ -1054,7 +1094,14 @@ function closeDrawer(){burger.classList.remove('open');drawer.classList.remove('
 burger.addEventListener('click',function(){drawer.classList.contains('on')?closeDrawer():openDrawer();});
 dbg.addEventListener('click',closeDrawer);
 document.getElementById('drawerClose').addEventListener('click',closeDrawer);
-drawer.querySelectorAll('.drawer-nav a').forEach(function(a){a.addEventListener('click',closeDrawer);});
+drawer.querySelectorAll('.d-link').forEach(function(a){a.addEventListener('click',closeDrawer);});
+(function(){
+  var fb=document.getElementById('dFleetBtn'),fs=document.getElementById('dFleetSub');
+  fb.addEventListener('click',function(){
+    var open=fb.classList.toggle('open');
+    fs.classList.toggle('open',open);
+  });
+})();
 
 var langBox=document.getElementById('lang');
 document.getElementById('langBtn').addEventListener('click',function(e){e.stopPropagation();langBox.classList.toggle('open');});
@@ -1072,6 +1119,7 @@ document.querySelectorAll('.wa-link').forEach(function(a){a.href=waLink(WA_DEFAU
 /* ================= INIT ================= */
 renderCatalog();
 bindCatalog();
+renderDrawerFleet();
 applyLang('ru');
 onScroll();
 </script>
